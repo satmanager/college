@@ -14,6 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+//Route to register new users. Must be disabled by default
+//Route::post('register', 'API\RegisterController@register');
+
+//Login API
+Route::get('token', 'API\RegisterController@login');
+
+
+//Courses API
+Route::get('courses/', 'API\CoursesController@showPages')->middleware('auth:api');
+Route::get('courses/all', 'API\CoursesController@showAll')->middleware('auth:api');
+Route::get('courses/{id}', 'API\CoursesController@show')->middleware('auth:api');
+Route::post('courses', 'API\CoursesController@store')->middleware('auth:api');
+Route::put('courses/{id}', 'API\CoursesController@update')->middleware('auth:api');
+Route::delete('courses/{id}', 'API\CoursesController@destroy')->middleware('auth:api');
