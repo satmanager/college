@@ -30,7 +30,7 @@ class CoursesController extends BaseController
         }
 
         $course = course::create($input);
-        return $this->sendResponse201($course->toArray(), 'Course created successfully.');
+        return $this->sendResponse($course->toArray(), 'Course created successfully.', 201);
     }
 
     /**

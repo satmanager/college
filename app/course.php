@@ -14,4 +14,12 @@ class course extends Model
     protected $fillable = [
         'name', 'code'
     ];
+
+    /**
+     * Relation to students
+     */
+    public function students()
+    {
+        return $this->hasMany('App\student');
+    }    
 }
